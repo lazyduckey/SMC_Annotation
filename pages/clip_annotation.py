@@ -1,7 +1,8 @@
 import streamlit as st
 from annotated_text import annotated_text, annotation
-from video_clip import *
-from readsheet import *
+from utils.video_clip import *
+from utils.readsheet import *
+from utils.make_table import make_table
 
 st.set_page_config(layout='wide')
 
@@ -38,22 +39,33 @@ with l_col:
     space_l, col1, col2, space_r = st.columns((5, 2, 2, 5))
 
 with r_col:
-    with st.form(f"Video Clip Information_{selected_video_num}", clear_on_submit=True):
-        annot = st.radio("Annotator", ("SJ", "EY", "NK", "JY"), index=check_index(selected_clip_info), horizontal=True, )
-        oper_name = st.text_input("operation_name", value=selected_clip_info[2])
-        bkgd = st.text_area("background", value=selected_clip_info[3])
-        step = st.text_input("step", value=selected_clip_info[4])
-        task = st.text_input("task", value=selected_clip_info[5])
-        next = st.text_input("next", value=selected_clip_info[6])
-        act_oper = st.text_area("action_operator", value=selected_clip_info[7])
-        act_assi = st.text_area("action_assistant", value=selected_clip_info[8])
+    with st.form(f"Video Clip Information_{selected_video_num}", clear_on_submit=True):   
+        if True in [bool(content) for content in selected_clip_info[1:8]]:
+            is_contents = True
+            edit = st.form_submit_button("Edit")
+
+            if edit:
+                is_contents = False
+                
+        else:
+            is_contents = False
+            
+        annot = st.radio("Annotator", ("SJ", "EY", "NK", "JY"), index=check_index(selected_clip_info), horizontal=True, disabled=is_contents)
+        oper_name = st.text_input("operation_name", value=selected_clip_info[2], disabled=is_contents)
+        bkgd = st.text_area("background", value=selected_clip_info[3], disabled=is_contents)
+        step = st.text_input("step", value=selected_clip_info[4], disabled=is_contents)
+        task = st.text_input("task", value=selected_clip_info[5], disabled=is_contents)
+        next = st.text_input("next", value=selected_clip_info[6], disabled=is_contents)
+        act_oper = st.text_area("action_operator", value=selected_clip_info[7], disabled=is_contents)
+        act_assi = st.text_area("action_assistant", value=selected_clip_info[8], disabled=is_contents)
         st.write("timestamp")
-        space1, col3, col4, space2 = st.columns((0.5, 2, 2, 0.5))
-        with col3:
+        space1, start_col, end_col, space2 = st.columns((0.5, 2, 2, 0.5))
+        with start_col:
             annotated_text("start", annotation(selected_clip_info[-2], color="#52ffc2"))
-        with col4:
+        with end_col:
             annotated_text("end", annotation(selected_clip_info[-1], color="#52ffc2"))
-        submit = st.form_submit_button("Submit")
+
+        submit = st.form_submit_button("Submit", type='primary')
 
 if submit:
     video_num = selected_video_num

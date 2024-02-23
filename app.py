@@ -1,8 +1,8 @@
 import streamlit as st
-from video_clip import *
+from utils.video_clip import *
 from st_pages import show_pages_from_config, add_page_title, hide_pages, show_pages, Page
 import streamlit_authenticator as stauth
-from cvt_form import cvt_to_dict 
+from utils.cvt_form import cvt_to_dict 
 
 def main():
     st.set_page_config(layout='wide')
