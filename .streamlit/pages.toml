@@ -1,0 +1,7 @@
+[[pages]]
+path="pages/clip_annotation.py"
+name = "Annotation"
+
+[[pages]]
+path="app.py"
+name = "App"
