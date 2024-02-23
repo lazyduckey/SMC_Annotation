@@ -2,7 +2,6 @@ import streamlit as st
 from annotated_text import annotated_text, annotation
 from utils.video_clip import *
 from utils.readsheet import *
-from utils.make_table import make_table
 
 st.set_page_config(layout='wide')
 
