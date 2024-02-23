@@ -75,3 +75,6 @@ if submit:
     if update_idx:
         range_name = f'Sheet1!B{update_idx}:I{update_idx}'
         update_values(spreadsheet_id, range_name, "USER_ENTERED", values)
+        
+        
+    st.rerun()
