@@ -9,9 +9,11 @@ if not st.session_state["authentication_status"]:
     st.write('# Login Failed !')
     st.stop()
 
+whois = st.session_state['name']
+
 spreadsheet_id = st.secrets['spreadsheet_id']
 
-cell_contents = get_cell_content(spreadsheet_id)
+cell_contents = get_cell_content(spreadsheet_id, whois)
 
 video_number = get_video_numbers(st.secrets['clip_file_path'])
 
@@ -49,7 +51,7 @@ with r_col:
         else:
             is_contents = False
             
-        annot = st.radio("Annotator", ("SJ", "EY", "NK", "JY"), index=check_index(selected_clip_info), horizontal=True, disabled=is_contents)
+        annot = ''
         oper_name = st.text_input("operation_name", value=selected_clip_info[2], disabled=is_contents)
         bkgd = st.text_area("background", value=selected_clip_info[3], disabled=is_contents)
         step = st.text_input("step", value=selected_clip_info[4], disabled=is_contents)
@@ -73,8 +75,7 @@ if submit:
     update_idx = get_index_by_filter(cell_contents, video_num, selected_clip_info[-2], selected_clip_info[-1])
 
     if update_idx:
-        range_name = f'Sheet1!B{update_idx}:I{update_idx}'
+        range_name = f'{whois}!B{update_idx}:I{update_idx}'
         update_values(spreadsheet_id, range_name, "USER_ENTERED", values)
-        
         
     st.rerun()

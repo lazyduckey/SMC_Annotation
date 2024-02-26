@@ -5,16 +5,17 @@ import streamlit as st
 
 creds, _ = google.auth.load_credentials_from_dict(dict(st.secrets['sheet_credentials']))
 
-def get_cell_content(spreadsheet_id):
+def get_cell_content(spreadsheet_id, whois):
     try:
         service = build("sheets", "v4", credentials=creds)
 
         result = (
             service.spreadsheets()
             .values()
-            .get(spreadsheetId=spreadsheet_id, range=st.secrets['sheet_range'])
+            .get(spreadsheetId=spreadsheet_id, range=whois+st.secrets['sheet_range'])
             .execute()
         )
+        
         rows = result.get("values", [])
         print(f"{len(rows)} rows retrieved")
         return rows
