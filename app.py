@@ -3,6 +3,7 @@ from utils.video_clip import *
 from st_pages import show_pages_from_config, add_page_title, hide_pages, show_pages, Page
 import streamlit_authenticator as stauth
 from utils.cvt_form import cvt_to_dict 
+from utils.readsheet import *
 
 def main():
     st.set_page_config(layout='wide')
@@ -23,10 +24,14 @@ def main():
 
     authenticator.login()
 
-    
-
     if st.session_state["authentication_status"]:
         st.write(f'### Login Success! \n Welcome *{st.session_state["name"]}*')
+        
+        spreadsheet_id = st.secrets['spreadsheet_id']
+        edit_spreadsheet_id = st.secrets['edit_spreadsheet_id']
+        whois = st.session_state['name']
+        init_edit_sheet_update(spreadsheet_id, edit_spreadsheet_id, whois)
+        
         col1, col2 = st.columns(2)
         with col1:
             if st.button("Annotation Page", type='primary'):
