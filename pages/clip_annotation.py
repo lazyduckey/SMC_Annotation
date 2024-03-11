@@ -34,18 +34,16 @@ video_number = get_video_numbers(st.secrets['clip_file_path'])
 prior_col1, prior_col2 = st.columns((5,5))
 with prior_col1:
     selected_video_num = st.selectbox('Select Video Number', [v_num for v_num in video_number], index=st.session_state['next_video_num'])
-    
-st.session_state['next_video_num'] = video_number.index(selected_video_num)
 
 clips_num = get_clip_numbers(st.secrets['clip_file_path'], selected_video_num)
 
 clips = get_clips(st.secrets['clip_file_path'], selected_video_num)
 
 with prior_col2:
-    selected_clip_num = st.selectbox('Select Video Clip Number', [i for i in clips_num], index=st.session_state['next_clip_num'])
-
-st.session_state['next_clip_num'] = clips_num.index(selected_clip_num)
+    selected_clip_num = st.selectbox('Select Video Clip Number', [c_num for c_num in clips_num], index=st.session_state['next_clip_num'] if st.session_state['next_video_num'] == selected_video_num else 0)
     
+    st.session_state['next_clip_num'] = clips_num.index(selected_clip_num)
+
 edit_state_df = transform_to_df(edit_spreadsheet_id, whois)
 
 selected_clip_edit_state = edit_state_df[(edit_state_df['VideoNumber']==selected_video_num) & (edit_state_df['ClipNumber']==selected_clip_num.split('_')[-1])]

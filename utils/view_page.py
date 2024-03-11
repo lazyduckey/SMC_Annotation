@@ -31,7 +31,6 @@ def view_page(whois, spreadsheet_id, cell_contents, video_number, clips_num, cli
                 update_values(st.secrets['edit_spreadsheet_id'], whois+f'!C{selected_clip_edit_state.index[0]+2}', 'USER_ENTERED', ['False'])
                 st.cache_data.clear()
                 st.rerun()
-                
             
         oper_name = st.text_input("operation_name", value=selected_clip_info[2], disabled=disabled)
         bkgd = st.text_area("background", value=selected_clip_info[3], disabled=disabled)
@@ -59,39 +58,45 @@ def view_page(whois, spreadsheet_id, cell_contents, video_number, clips_num, cli
                                                   index=get_index_action(selected_clip_info, 'oper', 'left', 'tools'), 
                                                   placeholder='Select Tool', 
                                                   disabled=disabled)
+                
             with act_oper_coll_2:
+                act_oper_left_verb = st.selectbox("action_operator left verb", 
+                                                  action_triplet_dict['verbs'], 
+                                                  index=get_index_action(selected_clip_info, 'oper', 'left', 'verbs'), 
+                                                  placeholder='Select Verb', 
+                                                  disabled=disabled) 
+        
+            with act_oper_coll_3:
                 act_oper_left_target = st.selectbox("action_operator left target", 
                                                     action_triplet_dict['targets'], 
                                                     index=get_index_action(selected_clip_info, 'oper', 'left', 'targets'), 
                                                     placeholder='Select Target', 
                                                     disabled=disabled)
-            with act_oper_coll_3:
-                act_oper_left_verb = st.selectbox("action_operator left verb", 
-                                                  action_triplet_dict['verbs'], 
-                                                  index=get_index_action(selected_clip_info, 'oper', 'left', 'verbs'), 
-                                                  placeholder='Select Verb', 
-                                                  disabled=disabled)
+
             with act_oper_colr_1:
                 act_oper_right_tool = st.selectbox("action_operator right tool", 
                                                    action_triplet_dict['tools'], 
                                                    index=get_index_action(selected_clip_info, 'oper', 'right', 'tools'), 
                                                    placeholder='Select Tool', 
                                                    disabled=disabled)
+                
             with act_oper_colr_2:
+                act_oper_right_verb = st.selectbox("action_operator right verb", 
+                                                   action_triplet_dict['verbs'], 
+                                                   index=get_index_action(selected_clip_info, 'oper', 'right', 'verbs'), 
+                                                   placeholder='Select Verb', 
+                                                   disabled=disabled)    
+                
+            with act_oper_colr_3:
                 act_oper_right_target = st.selectbox("action_operator right target", 
                                                      action_triplet_dict['targets'], 
                                                      index=get_index_action(selected_clip_info, 'oper', 'right', 'targets'), 
                                                      placeholder='Select Target', 
                                                      disabled=disabled)
-            with act_oper_colr_3:
-                act_oper_right_verb = st.selectbox("action_operator right verb", 
-                                                   action_triplet_dict['verbs'], 
-                                                   index=get_index_action(selected_clip_info, 'oper', 'right', 'verbs'), 
-                                                   placeholder='Select Verb', 
-                                                   disabled=disabled)
+
                 
-        act_oper = f'''{act_oper_left_tool},{act_oper_left_target},{act_oper_left_verb}
-{act_oper_right_tool},{act_oper_right_target},{act_oper_right_verb}'''
+        act_oper = f'''{act_oper_left_tool},{act_oper_left_verb},{act_oper_left_target}
+{act_oper_right_tool},{act_oper_right_verb},{act_oper_right_target}'''
 
         container_assi = st.container(border=True)
         with container_assi:
@@ -103,38 +108,44 @@ def view_page(whois, spreadsheet_id, cell_contents, video_number, clips_num, cli
                                                   index=get_index_action(selected_clip_info, 'assi', 'left', 'tools'), 
                                                   placeholder='Select Tool', 
                                                   disabled=disabled)
+                
             with act_assi_coll_2:
+                act_assi_left_verb = st.selectbox("action_assistant left verb", 
+                                                  action_triplet_dict['verbs'], 
+                                                  index=get_index_action(selected_clip_info, 'assi', 'left', 'verbs'), 
+                                                  placeholder='Select Verb', 
+                                                  disabled=disabled)    
+                
+            with act_assi_coll_3:
                 act_assi_left_target = st.selectbox("action_assistant left target", 
                                                     action_triplet_dict['targets'], 
                                                     index=get_index_action(selected_clip_info, 'assi', 'left', 'targets'), 
                                                     placeholder='Select Target', 
                                                     disabled=disabled)
-            with act_assi_coll_3:
-                act_assi_left_verb = st.selectbox("action_assistant left verb", 
-                                                  action_triplet_dict['verbs'], 
-                                                  index=get_index_action(selected_clip_info, 'assi', 'left', 'verbs'), 
-                                                  placeholder='Select Verb', 
-                                                  disabled=disabled)
+
             with act_assi_colr_1:
                 act_assi_right_tool = st.selectbox("action_assistant right tool", 
                                                    action_triplet_dict['tools'], 
                                                    index=get_index_action(selected_clip_info, 'assi', 'right', 'tools'), 
                                                    placeholder='Select Tool', 
                                                    disabled=disabled)
+                
             with act_assi_colr_2:
+                act_assi_right_verb = st.selectbox("action_assistant right verb", 
+                                                   action_triplet_dict['verbs'], 
+                                                   index=get_index_action(selected_clip_info, 'assi', 'right', 'verbs'), 
+                                                   placeholder='Select Verb', 
+                                                   disabled=disabled)    
+            
+            with act_assi_colr_3:
                 act_assi_right_target = st.selectbox("action_assistant right target", 
                                                      action_triplet_dict['targets'], 
                                                      index=get_index_action(selected_clip_info, 'assi', 'right', 'targets'), 
                                                      placeholder='Select Target', 
                                                      disabled=disabled)
-            with act_assi_colr_3:
-                act_assi_right_verb = st.selectbox("action_assistant right verb", 
-                                                   action_triplet_dict['verbs'], 
-                                                   index=get_index_action(selected_clip_info, 'assi', 'right', 'verbs'), 
-                                                   placeholder='Select Verb', 
-                                                   disabled=disabled)
-        act_assi = f'''{act_assi_left_tool},{act_assi_left_target},{act_assi_left_verb}
-{act_assi_right_tool},{act_assi_right_target},{act_assi_right_verb}'''
+            
+        act_assi = f'''{act_assi_left_tool},{act_assi_left_verb},{act_assi_left_target}
+{act_assi_right_tool},{act_assi_right_verb},{act_assi_right_target}'''
                 
         submit_col, _, next_col = st.columns((2,6,1))
         with submit_col:
@@ -154,13 +165,14 @@ def view_page(whois, spreadsheet_id, cell_contents, video_number, clips_num, cli
             update_values(spreadsheet_id, range_name, "USER_ENTERED", values)
             
         update_values(st.secrets['edit_spreadsheet_id'], whois+f'!C{selected_clip_edit_state.index[0]+2}', 'USER_ENTERED', ['True'])
-        
+
         st.cache_data.clear()
         st.rerun()
-
+        
     if next_btn:
         st.session_state['next_clip_num'] += 1
         if st.session_state['next_clip_num'] + 1 > len(clips):
             st.session_state['next_video_num'] += 1
             st.session_state['next_clip_num'] = 0
+
         st.rerun()
