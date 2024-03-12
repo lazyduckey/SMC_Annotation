@@ -2,7 +2,6 @@ from utils.categories import *
 
 
 def get_index_action(selected_clip_info, role, hand, action):
-    
     if role == 'oper':
         role_idx = 7
     elif role == 'assi':
@@ -12,7 +11,7 @@ def get_index_action(selected_clip_info, role, hand, action):
         hand_idx = 0
     elif hand == 'right':
         hand_idx = 1
-          
+        
     if action == 'tools':
         act_idx = 0
     elif action == 'verbs':

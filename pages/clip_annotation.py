@@ -41,7 +41,6 @@ clips = get_clips(st.secrets['clip_file_path'], selected_video_num)
 
 with prior_col2:
     selected_clip_num = st.selectbox('Select Video Clip Number', [c_num for c_num in clips_num], index=st.session_state['next_clip_num'] if st.session_state['next_video_num'] == selected_video_num else 0)
-    
     st.session_state['next_clip_num'] = clips_num.index(selected_clip_num)
 
 edit_state_df = transform_to_df(edit_spreadsheet_id, whois)
