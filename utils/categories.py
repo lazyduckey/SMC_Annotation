@@ -36,7 +36,7 @@ step_task_dict = {
                                 "hemostasis(bleeding control)",
                                 "adhesiolysis",
                                 "hemostatic agents placement",
-                                "anti-adhesive agents placement"
+                                "anti-adhesive agents placement",
                                 "input text"],
     "cholecystectomy": ["Calot triangle dissection",
                         "clipping and cutting",
@@ -51,7 +51,8 @@ step_task_dict = {
            "hemostasis(bleeding control)",
            "adhesiolysis",
            "input text"],
-    "input text": ["input text"]}
+    "input text": ["input text"],
+    None: [None]}
 
 action_triplet_dict = {
     'tools': ['null',
@@ -70,7 +71,8 @@ action_triplet_dict = {
              'anti-adhesive agents', 
              'hemolock clip', 
              'bulldog clamp', 
-             'right angle'],
+             'right angle',
+             'input text'],
     'targets': ['null',
                'round ligament',
                'falciform ligament', 
@@ -100,7 +102,8 @@ action_triplet_dict = {
                'liver surface',
                'around of op site',
                'fluid',
-               'intrahepatic vein'],
+               'intrahepatic vein',
+               'input text'],
     'verbs': ['null',
              'dissect',
              'coagulate',
@@ -116,4 +119,5 @@ action_triplet_dict = {
              'irrigation',
              'retract',
              'tear',
-             'removal']}
+             'removal',
+             'input text']}
