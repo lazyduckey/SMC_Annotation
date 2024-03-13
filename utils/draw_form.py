@@ -64,7 +64,7 @@ def draw_oper_action(action_triplet_dict, selected_clip_info, disabled):
                                                 disabled=disabled)
             if act_oper_left_target == "input text":
                 detailed_act_oper_left_target = st.text_area("act_oper_left_target", value=get_value_action(selected_clip_info, 'oper', 'left', 'targets'), disabled=disabled)
-                act_oper_left_targetl = detailed_act_oper_left_target
+                act_oper_left_target = detailed_act_oper_left_target
             
 
         with act_oper_colr_1:
