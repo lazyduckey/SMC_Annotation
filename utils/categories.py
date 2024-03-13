@@ -35,6 +35,8 @@ step_task_dict = {
                                 "drainage tube placement",
                                 "hemostasis(bleeding control)",
                                 "adhesiolysis",
+                                "hemostatic agents placement",
+                                "anti-adhesive agents placement"
                                 "input text"],
     "cholecystectomy": ["Calot triangle dissection",
                         "clipping and cutting",
