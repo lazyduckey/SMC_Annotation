@@ -27,7 +27,7 @@ step_task_dict = {
                                 "adhesiolysis",
                                 "input text"],
     "hemostasis after transection": ["hemostasis of the transected liver surface", 
-                                     "hemostasis of the transected liver surface",
+                                     "hemostasis of the perihepatic tissue",
                                      "hemostasis(bleeding control)",
                                      "adhesiolysis",
                                      "input text"],
