@@ -1,6 +1,9 @@
 from utils.categories import *
 
 def get_index_action(act_idx, act):
+    if not act:
+        return 0
+    
     if act_idx == 0:
         if act in action_triplet_dict['tools']:
             return action_triplet_dict['tools'].index(act)
