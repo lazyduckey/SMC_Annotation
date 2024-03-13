@@ -22,7 +22,7 @@ def draw_step(selected_clip_info, disabled):
     return step
 
 def draw_task(step, selected_clip_info, disabled):
-    task = st.selectbox("task", step_task_dict[step] if step in step_task_dict.keys() else step_task_dict["input text"], index=find_index(selected_clip_info, step_task_dict[step], 5) if step else None, placeholder='Select Task', disabled=disabled)
+    task = st.selectbox("task", step_task_dict[step] if step in step_task_dict.keys() else step_task_dict["input text"], index=find_index(selected_clip_info, step_task_dict[step], 5) if step in step_task_dict.keys() else None, placeholder='Select Task', disabled=disabled)
     if task == "input text":
         detailed_task = st.text_area("task", value=selected_clip_info[5], disabled=disabled)
         task = detailed_task

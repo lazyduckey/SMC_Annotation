@@ -40,7 +40,7 @@ def get_value_action(selected_clip_info, role, hand, action):
         
     return selected_clip_info[role_idx].split('\n')[hand_idx].split(',')[act_idx] if selected_clip_info[role_idx] else None
 
-def find_index(selected_clip_info, task_or_step_lst, idx):
+def find_index(selected_clip_info, task_or_step_lst, idx):    
     if selected_clip_info[idx]:
         if selected_clip_info[idx] in task_or_step_lst:
             return task_or_step_lst.index(selected_clip_info[idx])
@@ -48,6 +48,3 @@ def find_index(selected_clip_info, task_or_step_lst, idx):
             return selected_clip_info[-1]
     else:    
         return None
-    
-    
-    
