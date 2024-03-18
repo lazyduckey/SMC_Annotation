@@ -82,7 +82,7 @@ def init_edit_sheet_update(spreadsheet_id, edit_spreadsheet_id, whois):
                 
     if need_edit:            
         edit_state = [[state[2]] for state in edit_state[1:]]
-        update_edit_values(edit_spreadsheet_id, whois+'!C2:C1278', "USER_ENTERED", edit_state)    
+        update_edit_values(edit_spreadsheet_id, whois+'!C2:C2098', "USER_ENTERED", edit_state)    
     else:
         print('Syncronized!')
     
