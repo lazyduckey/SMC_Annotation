@@ -32,7 +32,7 @@ def view_page(whois, spreadsheet_id, cell_contents, video_number, clips_num, cli
             
         task = draw_task(step, selected_clip_info, disabled)
             
-        next = st.text_input("next", value=selected_clip_info[6], disabled=disabled)
+        next = st.text_area("next", value=selected_clip_info[6], disabled=disabled)
         
         act_oper = draw_oper_action(action_triplet_dict, selected_clip_info, disabled)
         
