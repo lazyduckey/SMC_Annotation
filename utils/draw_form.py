@@ -14,7 +14,7 @@ def draw_video_form(clips, clips_num, selected_clip_num, selected_clip_info):
             annotated_text("end", annotation(selected_clip_info[-1], color="#52ffc2"))
 
 def draw_step(selected_clip_info, disabled):
-    step = st.selectbox("step", (step_task_dict.keys()), index=find_index(selected_clip_info, list(step_task_dict.keys()), 4), placeholder='Select Step', disabled=disabled)
+    step = st.selectbox("step", (step_task_dict.keys()), index=find_task_index(selected_clip_info, list(step_task_dict.keys()), 4), placeholder='Select Step', disabled=disabled)
     if step == "input text":
         detailed_step = st.text_area("step", value=selected_clip_info[4], disabled=disabled)
         step = detailed_step
@@ -22,7 +22,7 @@ def draw_step(selected_clip_info, disabled):
     return step
 
 def draw_task(step, selected_clip_info, disabled):
-    task = st.selectbox("task", step_task_dict[step] if step in step_task_dict.keys() else step_task_dict["input text"], index=find_index(selected_clip_info, step_task_dict[step], 5) if step in step_task_dict.keys() else None, placeholder='Select Task', disabled=disabled)
+    task = st.selectbox("task", step_task_dict[step] if step in step_task_dict.keys() else step_task_dict["input text"], index=find_step_index(selected_clip_info, step if step else None, 5), placeholder='Select Task', disabled=disabled)
     if task == "input text":
         detailed_task = st.text_area("task", value=selected_clip_info[5], disabled=disabled)
         task = detailed_task

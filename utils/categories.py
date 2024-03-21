@@ -51,8 +51,7 @@ step_task_dict = {
            "hemostasis(bleeding control)",
            "adhesiolysis",
            "input text"],
-    "input text": ["input text"],
-    None: [None]}
+    "input text": ["input text"]}
 
 action_triplet_dict = {
     'tools': ['null',

@@ -34,17 +34,26 @@ def get_value_action(selected_clip_info, role, hand, action):
     if action == 'tools':
         act_idx = 0
     elif action == 'verbs':
-        act_idx = 1   
+        act_idx = 1
     elif action == 'targets':
         act_idx = 2
         
     return selected_clip_info[role_idx].split('\n')[hand_idx].split(',')[act_idx] if selected_clip_info[role_idx] else None
 
-def find_index(selected_clip_info, task_or_step_lst, idx):    
+def find_task_index(selected_clip_info, task_lst, idx):
     if selected_clip_info[idx]:
-        if selected_clip_info[idx] in task_or_step_lst:
-            return task_or_step_lst.index(selected_clip_info[idx])
+        if selected_clip_info[idx] in task_lst:
+            return task_lst.index(selected_clip_info[idx])
         else:
-            return selected_clip_info[-1]
+            return task_lst.index("input text")
+    else:    
+        return None
+    
+def find_step_index(selected_clip_info, step, idx):
+    if selected_clip_info[idx]:
+        if step in step_task_dict.keys():
+            return step_task_dict[step].index(selected_clip_info[idx])
+        else:
+            return step_task_dict["input text"].index("input text")
     else:    
         return None
