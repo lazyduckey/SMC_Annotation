@@ -50,6 +50,9 @@ def find_task_index(selected_clip_info, task_lst, idx):
         return None
     
 def find_step_index(selected_clip_info, step, idx):
+    if step != selected_clip_info[4]:
+        return None
+    
     if selected_clip_info[idx]:
         if step in step_task_dict.keys():
             return step_task_dict[step].index(selected_clip_info[idx])
