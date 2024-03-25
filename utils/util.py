@@ -29,7 +29,7 @@ def get_value_action(selected_clip_info, role, hand, action):
     if hand == 'left':
         hand_idx = 0
     elif hand == 'right':
-        hand_idx = 1
+        hand_idx = -1
         
     if action == 'tools':
         act_idx = 0
@@ -37,7 +37,7 @@ def get_value_action(selected_clip_info, role, hand, action):
         act_idx = 1
     elif action == 'targets':
         act_idx = 2
-        
+    
     return selected_clip_info[role_idx].split('\n')[hand_idx].split(',')[act_idx] if selected_clip_info[role_idx] else None
 
 def find_task_index(selected_clip_info, task_lst, idx):
