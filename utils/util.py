@@ -54,9 +54,10 @@ def find_step_index(selected_clip_info, step, idx):
         return None
     
     if selected_clip_info[idx]:
-        if step in step_task_dict.keys():
-            return step_task_dict[step].index(selected_clip_info[idx])
-        else:
-            return step_task_dict["input text"].index("input text")
+        if step in list(step_task_dict.keys()):
+            if selected_clip_info[idx] in step_task_dict[step]:
+                return step_task_dict[step].index(selected_clip_info[idx])
+
+        return step_task_dict["input text"].index("input text")
     else:    
         return None
